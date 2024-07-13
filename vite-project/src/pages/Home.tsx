@@ -1,5 +1,11 @@
+import MenuBar from '../components/home/MenuBar';
+
 const Home = () => {
-    return <div>Home</div>;
+  return (
+    <div>
+      <MenuBar />
+    </div>
+  );
   };
   
   export default Home;
