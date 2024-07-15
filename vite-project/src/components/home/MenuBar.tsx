@@ -1,16 +1,49 @@
+import { useState } from 'react';
 import { FaHotel } from 'react-icons/fa';
 import { MdRestaurantMenu } from 'react-icons/md';
+
 import FilterItem from './FilterItem';
 import { useSearchTerm } from '../../hooks/useSearchTerm.hook';
-import { useState } from 'react';
+import { useSearchedHotels } from '../../hooks/useSearchedHotels';
+import { useLoading } from '../../hooks/useLoading';
+import { searchHotels } from '../../utils/hotelsApi';
+import { SearchHotel } from '../../models/Hotel';
 
 const MenuBar = () => {
   const { searchTerm, setSearchTerm } = useSearchTerm();
+  const { setSearchedHotels } = useSearchedHotels();
+  const { setLoading } = useLoading();
   const [inputSearch, setInputSearch] = useState(searchTerm);
 
-  const handleSearch = () => {
+  const handleSearch = async () => { 
     setSearchTerm(inputSearch);
-  };
+  
+  if (inputSearch) {
+    setLoading(true);
+    try {
+      const hotelsResponse = await searchHotels(inputSearch);
+      let newHotels: SearchHotel[] = [];
+      hotelsResponse.results.forEach((result: any) => {
+        newHotels.push(
+          new SearchHotel(
+            result.id,
+            result.name,
+            result.rating,
+            result.reviews,
+            {
+              min: result.price_range_usd.min,
+              max: result.price_range_usd.max,
+            }
+          )
+        );
+      });
+      setSearchedHotels(newHotels);
+    } catch (error) {
+      setSearchedHotels([]);
+    }
+    setLoading(false);
+  }
+};
 
   return (
     <>
