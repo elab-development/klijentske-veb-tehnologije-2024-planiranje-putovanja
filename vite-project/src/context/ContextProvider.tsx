@@ -1,5 +1,6 @@
 import { createContext, ReactNode, useState } from 'react';
 import { SearchHotel } from '../models/Hotel';
+import { SearchRestaurant } from '../models/Restaurant';
 
 interface GlobalContextProps {
   searchTerm: string;
@@ -10,6 +11,10 @@ interface GlobalContextProps {
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   searchedHotels: SearchHotel[];
   setSearchedHotels: React.Dispatch<React.SetStateAction<SearchHotel[]>>;
+  searchedRestaurants: SearchRestaurant[];
+  setSearchedRestaurants: React.Dispatch<
+    React.SetStateAction<SearchRestaurant[]>
+  >;
 }
 
 const GlobalContext = createContext<GlobalContextProps | undefined>(undefined);
@@ -21,6 +26,9 @@ export const ContextProvider: React.FC<{ children: ReactNode }> = ({
   const [filter, setFilter] = useState<string>('hotels');
   const [loading, setLoading] = useState<boolean>(false);
   const [searchedHotels, setSearchedHotels] = useState<SearchHotel[]>([]);
+  const [searchedRestaurants, setSearchedRestaurants] = useState<
+  SearchRestaurant[]
+>([]);
 
   return (
     <GlobalContext.Provider
@@ -33,6 +41,8 @@ export const ContextProvider: React.FC<{ children: ReactNode }> = ({
         setLoading,
         searchedHotels,
         setSearchedHotels,
+        searchedRestaurants,
+        setSearchedRestaurants,
       }}
     >
       {children}

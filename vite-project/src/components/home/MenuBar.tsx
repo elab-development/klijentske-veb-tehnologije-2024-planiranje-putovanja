@@ -5,21 +5,21 @@ import { MdRestaurantMenu } from 'react-icons/md';
 import FilterItem from './FilterItem';
 import { useSearchTerm } from '../../hooks/useSearchTerm.hook';
 import { useSearchedHotels } from '../../hooks/useSearchedHotels';
+import { useSearchedRestaurants } from '../../hooks/useSearchedRestaurants';
 import { useLoading } from '../../hooks/useLoading';
 import { searchHotels } from '../../utils/hotelsApi';
+import { searchRestaurants } from '../../utils/restaurantsApi';
 import { SearchHotel } from '../../models/Hotel';
+import { SearchRestaurant } from '../../models/Restaurant';
 
 const MenuBar = () => {
   const { searchTerm, setSearchTerm } = useSearchTerm();
   const { setSearchedHotels } = useSearchedHotels();
+  const { setSearchedRestaurants } = useSearchedRestaurants();
   const { setLoading } = useLoading();
   const [inputSearch, setInputSearch] = useState(searchTerm);
 
-  const handleSearch = async () => { 
-    setSearchTerm(inputSearch);
-  
-  if (inputSearch) {
-    setLoading(true);
+  const fetchHotels = async () => {
     try {
       const hotelsResponse = await searchHotels(inputSearch);
       let newHotels: SearchHotel[] = [];
@@ -33,7 +33,8 @@ const MenuBar = () => {
             {
               min: result.price_range_usd.min,
               max: result.price_range_usd.max,
-            }
+            },
+            result.featured_image
           )
         );
       });
@@ -41,6 +42,37 @@ const MenuBar = () => {
     } catch (error) {
       setSearchedHotels([]);
     }
+  };
+
+  const fetchRestaurants = async () => {
+    try {
+      const restaurantsResponse = await searchRestaurants(inputSearch);
+      let newRestaurants: SearchRestaurant[] = [];
+      restaurantsResponse.results.forEach((result: any) => {
+        newRestaurants.push(
+          new SearchRestaurant(
+            result.id,
+            result.name,
+            result.rating,
+            result.reviews,
+            result.price_range_usd,
+            result.featured_image
+          )
+        );
+      });
+      setSearchedRestaurants(newRestaurants);
+    } catch (error) {
+      setSearchedRestaurants([]);
+    }
+  };
+
+  const handleSearch = async () => { 
+    setSearchTerm(inputSearch);
+  
+  if (inputSearch) {
+    setLoading(true);
+    await fetchHotels();
+    await fetchRestaurants();
     setLoading(false);
   }
 };

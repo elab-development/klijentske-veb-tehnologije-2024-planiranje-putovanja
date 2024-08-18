@@ -1,18 +1,9 @@
-export interface PriceRange {
-    min: number;
-    max: number;
-  }
-  
-  export const getAveragePrice = (priceRage: PriceRange) => {
-    return (priceRage.min + priceRage.max) / 2;
-  };
-  
-  export class SearchHotel {
+export class SearchRestaurant {
     public id: number;
     public name: string;
     public rating: number;
     public reviews: number;
-    public priceRange: PriceRange;
+    public priceRange: string;
     public image: string;
   
     constructor(
@@ -20,7 +11,7 @@ export interface PriceRange {
       name: string,
       rating: number,
       reviews: number,
-      priceRange: PriceRange,
+      priceRange: string,
       image: string
     ) {
       this.id = id;
