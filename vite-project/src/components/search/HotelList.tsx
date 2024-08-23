@@ -52,9 +52,9 @@ const HotelList = () => {
           ))}
       </div>
 
-      {searchedHotels && (
+      {searchedHotels.length > 0 && (
         <div className='flex items-center justify-center gap-5 my-5'>
-          {[...Array(totalPages)].map((e, idx) => (
+         {[...Array(totalPages)].map((e, idx) => (
             <div
               className={`bg-green-400 px-3 rounded-full text-xl py-1 font-bold text-white cursor-pointer hover:bg-green-700 ${
                 currentPage === idx + 1 && ' activepagination'
