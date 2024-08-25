@@ -5,12 +5,14 @@ import { useEffect, useState } from 'react';
 
 const Navbar = () => {
   const [user, setUser] = useState('');
-  const { loggedIn } = useLoggedIn();
+  const { loggedIn, setLoggedIn } = useLoggedIn();
 
   useEffect(() => {
     let storage = localStorage.getItem('user');
     if (storage) {
       setUser(storage);
+    } else {
+      setUser('');
     }
   }, [loggedIn]);
 
@@ -27,7 +29,13 @@ const Navbar = () => {
           </h1>
         )}
         {loggedIn && (
-          <Link to={'/login'}>
+           <Link
+           to={'/login'}
+           onClick={() => {
+             localStorage.removeItem('user');
+             setLoggedIn(false);
+           }}
+         >
             <h1 className='font-semibold mt-2'>Logout</h1>
           </Link>
         )}
