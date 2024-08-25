@@ -12,6 +12,13 @@ const HotelList = () => {
   const { searchTerm } = useSearchTerm();
   const { loading } = useLoading();
 
+  useEffect(() => {
+    if (searchedHotels?.length > 0) {
+      setTotalPages(Math.ceil(searchedHotels.length / 12));
+    }
+    setCurrentPage(1);
+  }, [searchedHotels]);
+
   if (loading) {
     return (
       <div className='flex justify-center mt-20'>
@@ -20,14 +27,7 @@ const HotelList = () => {
     );
   }
 
-  useEffect(() => {
-    if (searchedHotels?.length > 0) {
-      setTotalPages(Math.ceil(searchedHotels.length / 12));
-    }
-    setCurrentPage(1);
-  }, [searchedHotels]);
-
-  return (
+   return (
     <>
       {searchTerm
         ? searchedHotels.length === 0 && (
@@ -52,7 +52,7 @@ const HotelList = () => {
           ))}
       </div>
 
-      {searchedHotels.length > 0 && (
+      {searchedHotels?.length > 0 && (
         <div className='flex items-center justify-center gap-5 my-5'>
          {[...Array(totalPages)].map((e, idx) => (
             <div
