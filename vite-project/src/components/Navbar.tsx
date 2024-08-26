@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import { useLoggedIn } from '../hooks/useLoggedIn';
 import { useEffect, useState } from 'react';
-import ButtonComponent from './ButtonComponent';
+// import ButtonComponent from './ButtonComponent';
 
 const Navbar = () => {
   const [user, setUser] = useState('');
@@ -17,9 +17,9 @@ const Navbar = () => {
     }
   }, [loggedIn]);
 
-  const handleButtonClick = () => {
-    console.log('Button clicked!');
-  };
+ // const handleButtonClick = () => {
+  //   console.log('Button clicked!');
+  // };
 
   return (
     <div className='flex py-4 sm:pl-20 sm:justify-between items-center navbar flex-col sm:flex-row'>
@@ -48,16 +48,18 @@ const Navbar = () => {
             <h1 className='font-semibold mt-2'>Logout</h1>
           </Link>
         )}
-          <span
-          onClick={() => {
-            localStorage.removeItem('user');
-            setLoggedIn(false);
-          }}
+           {/* Testing purposes */}
+           {/* <span 
+              onClick={() => {
+                 localStorage.removeItem('user');
+                 setLoggedIn(false);
+            }}
         >
           Logout
-        </span>
+       </span> */}
       </div>
-      <ButtonComponent onButtonClick={handleButtonClick} />
+      {/* Testing purposes */}
+      {/* <ButtonComponent onButtonClick={handleButtonClick} /> */}
     </div>
   );
 };

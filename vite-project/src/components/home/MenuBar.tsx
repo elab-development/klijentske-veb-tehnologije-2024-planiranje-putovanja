@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FaHotel } from 'react-icons/fa';
+import { FaHotel, FaHeart } from 'react-icons/fa';
 import { MdRestaurantMenu } from 'react-icons/md';
 
 import FilterItem from './FilterItem';
@@ -86,6 +86,7 @@ const MenuBar = () => {
           name='restaurants'
           icon={<MdRestaurantMenu className='w-6 h-6' />}
         />
+          <FilterItem name='favorites' icon={<FaHeart className='w-6 h-6' />} />
       </div>
       <div className='flex justify-center items-center'>
         <input
