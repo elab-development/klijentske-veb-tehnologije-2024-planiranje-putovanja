@@ -8,7 +8,7 @@ import { getRestaurantsDetails } from '../utils/restaurantsApi';
 import { RestaurantDetails } from '../models/Restaurant';
 
 const Restaurant = () => {
-    const [restaurant, setRestaurant] = useState<RestaurantDetails | null>(null);
+  const [restaurant, setRestaurant] = useState<RestaurantDetails | null>(null);
   const { loading, setLoading } = useLoading();
   const { id } = useParams();
 

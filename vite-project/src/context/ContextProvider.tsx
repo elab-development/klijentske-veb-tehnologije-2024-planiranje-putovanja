@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useState } from 'react';
-import { SearchHotel } from '../models/Hotel';
+import { SearchHotel } from '../models/Hotels';
 import { SearchRestaurant } from '../models/Restaurant';
 import { Favorite } from '../models/Favorites';
 
@@ -26,16 +26,16 @@ const GlobalContext = createContext<GlobalContextProps | undefined>(undefined);
 
 export const ContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
-}) => { 
+}) => {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [filter, setFilter] = useState<string>('hotels');
   const [loading, setLoading] = useState<boolean>(false);
   const [searchedHotels, setSearchedHotels] = useState<SearchHotel[]>([]);
   const [searchedRestaurants, setSearchedRestaurants] = useState<
-  SearchRestaurant[]
->([]);
-const [favorites, setFavorites] = useState<Favorite[]>([]);
-const [loggedIn, setLoggedIn] = useState(false);
+    SearchRestaurant[]
+  >([]);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [favorites, setFavorites] = useState<Favorite[]>([]);
 
   return (
     <GlobalContext.Provider

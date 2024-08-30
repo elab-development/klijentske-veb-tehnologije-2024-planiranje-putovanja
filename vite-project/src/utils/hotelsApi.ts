@@ -9,7 +9,7 @@ export const searchHotels = async (query: string) => {
       page: '1',
     },
     headers: {
-      'x-rapidapi-key': 'dddd7275afmsh98a7a2962883206p1080a8jsn2a7f8b10c014',
+      'x-rapidapi-key': 'b81b85f2b7msh2762d906e0ac700p1a567bjsn338860bf0f89',
       'x-rapidapi-host': 'tripadvisor-scraper.p.rapidapi.com',
     },
   };
@@ -28,7 +28,7 @@ export const getHotelDetails = async (id: string) => {
     url: 'https://tripadvisor-scraper.p.rapidapi.com/hotels/detail',
     params: { id: id },
     headers: {
-    'x-rapidapi-key': 'dddd7275afmsh98a7a2962883206p1080a8jsn2a7f8b10c014',
+      'x-rapidapi-key': 'b81b85f2b7msh2762d906e0ac700p1a567bjsn338860bf0f89',
       'x-rapidapi-host': 'tripadvisor-scraper.p.rapidapi.com',
     },
   };

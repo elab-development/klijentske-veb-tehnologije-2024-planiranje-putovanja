@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import tripadvisorImg from '../assets/tripadvisor.jpg';
 import { getHotelDetails } from '../utils/hotelsApi';
-import { HotelDetails } from '../models/Hotel';
+import { HotelDetails } from '../models/Hotels';
 import { useLoading } from '../hooks/useLoading';
 import Loader from '../components/Loader';
 
@@ -111,6 +111,6 @@ const Hotel = () => {
       </div>
     </div>
   );
-  };
-  
-  export default Hotel;
+};
+
+export default Hotel;

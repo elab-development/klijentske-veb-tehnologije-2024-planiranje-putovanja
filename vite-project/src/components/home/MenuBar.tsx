@@ -9,7 +9,7 @@ import { useSearchedRestaurants } from '../../hooks/useSearchedRestaurants';
 import { useLoading } from '../../hooks/useLoading';
 import { searchHotels } from '../../utils/hotelsApi';
 import { searchRestaurants } from '../../utils/restaurantsApi';
-import { SearchHotel } from '../../models/Hotel';
+import { SearchHotel } from '../../models/Hotels';
 import { SearchRestaurant } from '../../models/Restaurant';
 
 const MenuBar = () => {
@@ -66,16 +66,16 @@ const MenuBar = () => {
     }
   };
 
-  const handleSearch = async () => { 
+  const handleSearch = async () => {
     setSearchTerm(inputSearch);
-  
-  if (inputSearch) {
-    setLoading(true);
-    await fetchHotels();
-    await fetchRestaurants();
-    setLoading(false);
-  }
-};
+
+    if (inputSearch) {
+      setLoading(true);
+      await fetchHotels();
+      await fetchRestaurants();
+      setLoading(false);
+    }
+  };
 
   return (
     <>
@@ -86,7 +86,7 @@ const MenuBar = () => {
           name='restaurants'
           icon={<MdRestaurantMenu className='w-6 h-6' />}
         />
-          <FilterItem name='favorites' icon={<FaHeart className='w-6 h-6' />} />
+        <FilterItem name='favorites' icon={<FaHeart className='w-6 h-6' />} />
       </div>
       <div className='flex justify-center items-center'>
         <input

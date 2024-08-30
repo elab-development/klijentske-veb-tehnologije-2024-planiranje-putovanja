@@ -29,7 +29,7 @@ export const getRestaurantsDetails = async (id: string) => {
     params: { id: id },
     headers: {
       'x-rapidapi-key': 'dddd7275afmsh98a7a2962883206p1080a8jsn2a7f8b10c014',
-       'x-rapidapi-host': 'tripadvisor-scraper.p.rapidapi.com',
+      'x-rapidapi-host': 'tripadvisor-scraper.p.rapidapi.com',
     },
   };
 

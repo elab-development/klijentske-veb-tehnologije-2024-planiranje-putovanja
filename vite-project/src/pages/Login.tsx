@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { useLoggedIn } from '../hooks/useLoggedIn';
 
- const Login = () => {
+const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -86,6 +86,6 @@ import { useLoggedIn } from '../hooks/useLoggedIn';
       </div>
     </div>
   );
-  };
-  
-  export default Login;
+};
+
+export default Login;

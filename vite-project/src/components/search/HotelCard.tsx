@@ -6,8 +6,8 @@ import { RiMoneyDollarCircleFill } from 'react-icons/ri';
 import { FaHeart, FaRegHeart } from 'react-icons/fa6';
 
 import tripadvisorImg from '../../assets/tripadvisor.jpg';
-import { SearchHotel } from '../../models/Hotel';
-import { getAveragePrice } from '../../models/Hotel';
+import { SearchHotel } from '../../models/Hotels';
+import { getAveragePrice } from '../../models/Hotels';
 import { useFavorites } from '../../hooks/useFavorites.hook';
 import { Favorite } from '../../models/Favorites';
 
